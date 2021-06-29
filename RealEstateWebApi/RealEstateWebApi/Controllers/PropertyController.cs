@@ -30,45 +30,73 @@ namespace RealEstateWebApi.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select EmployeeId, EmployeeName, Department, 
-        convert(varchar(10),DateOfJoining,120) as DateOfJoining, PhotoFileName
-            from dbo.Employee";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            try
             {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                string sqlDataSource = _configuration.GetConnectionString("RealEstateAppCon");
+                var conn = new SqlConnection(sqlDataSource);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("Property_GetProperties", conn)
                 {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                using (SqlDataReader oReader = cmd.ExecuteReader())
+                {
+                        /*Property category = new Property
+                        {
+                            property_id = int.Parse(oReader["property_id"].ToString()),
+                            property_type = oReader["property_type"].ToString(),
+                            description = oReader["description"].ToString(),
+                            city = oReader["city"].ToString(),
+                            address = oReader["address"].ToString(),
+                            total_bedrooms = oReader["total_bedrooms"].ToString(),
+                            total_area_m2 = oReader["total_area_m2"].ToString(),
+                            photo_file_name = oReader["photo_file_name"].ToString(),
+                            price = int.Parse(oReader["price"].ToString())
+                        };
+                        */
+                        table.Load(oReader);
+                    
+                    conn.Close();
+
+                    return new JsonResult(table);
                 }
             }
-            return new JsonResult(table);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPost]
         public JsonResult Post(Property property)
         {
-            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+            if (property.photo_file_name == null)
+            {
+                property.photo_file_name = "noImage.jpg";
+            }
+
+            string sqlDataSource = _configuration.GetConnectionString("RealEstateAppCon");
             var conn = new SqlConnection(sqlDataSource);
             conn.Open();
 
             SqlCommand cmd = new SqlCommand();
 
-            using (cmd = new SqlCommand("Employees_AddEmployee", conn))
+            using (cmd = new SqlCommand("Property_AddProperty", conn))
             {
-                // 2. identificamos el tipo de ejecución, en este caso un SP
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                // 3. en caso de que los lleve se ponen los parametros del SP
-                cmd.Parameters.Add(new SqlParameter("@EmployeeName", employee.EmployeeName));
-                cmd.Parameters.Add(new SqlParameter("@Department", employee.Department));
-                cmd.Parameters.Add(new SqlParameter("@DateOfJoining", employee.DateOfJoining));
-                cmd.Parameters.Add(new SqlParameter("@PhotoFileName", employee.PhotoFileName));
+                cmd.Parameters.Add(new SqlParameter("@property_type", property.property_type));
+                cmd.Parameters.Add(new SqlParameter("@description", property.description));
+                cmd.Parameters.Add(new SqlParameter("@city", property.city));
+                cmd.Parameters.Add(new SqlParameter("@address", property.address));
+                cmd.Parameters.Add(new SqlParameter("@total_bedrooms", property.total_bedrooms));
+                cmd.Parameters.Add(new SqlParameter("@total_area_m2", property.total_area_m2));
+                cmd.Parameters.Add(new SqlParameter("@photo_file_name", property.photo_file_name));
+                cmd.Parameters.Add(new SqlParameter("@price", property.price));
+
                 int rtnInsert = Convert.ToInt32(cmd.ExecuteNonQuery());
 
                 if (conn.State == ConnectionState.Open)
@@ -83,84 +111,74 @@ namespace RealEstateWebApi.Controllers
                 {
                     return new JsonResult("Error");
                 }
-
             }
         }
-        /*
-        public JsonResult Post(Employee employee)
-        {
-            string query = @" insert into dbo.Employee 
-            (EmployeeName,Department, DateOfJoining, PhotoFileName) values
-        (
-            '" + employee.EmployeeName + @"'
-            ,'" + employee.Department + @"'
-            ,'" + employee.DateOfJoining + @"'
-            ,'" + employee.PhotoFileName + @"'
-
-        )";
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult("Added Successfully");
-        } */
 
         [HttpPut]
-        public JsonResult Put(Employee employee)
+        public JsonResult Put(Property property)
         {
-            string query = @" update dbo.Employee set 
-            EmployeeName = '" + employee.EmployeeName + @"'
-            ,Department = '" + employee.Department + @"'
-            ,DateOfJoining = '" + employee.DateOfJoining + @"'
-             where EmployeeId = " + employee.EmployeeId + @" ";
+            string sqlDataSource = _configuration.GetConnectionString("RealEstateAppCon");
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            try
             {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                var conn = new SqlConnection(sqlDataSource);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                using (cmd = new SqlCommand("Property_UpdateProperty", conn))
                 {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@property_id", property.property_id));
+                    cmd.Parameters.Add(new SqlParameter("@property_type", property.property_type));
+                    cmd.Parameters.Add(new SqlParameter("@description", property.description));
+                    cmd.Parameters.Add(new SqlParameter("@city", property.city));
+                    cmd.Parameters.Add(new SqlParameter("@address", property.address));
+                    cmd.Parameters.Add(new SqlParameter("@total_bedrooms", property.total_bedrooms));
+                    cmd.Parameters.Add(new SqlParameter("@total_area_m2", property.total_area_m2));
+                    cmd.Parameters.Add(new SqlParameter("@photo_file_name", property.photo_file_name));
+                    cmd.Parameters.Add(new SqlParameter("@price", property.price));
+
+                    cmd.ExecuteNonQuery();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                 }
+                    return new JsonResult("Updated Successfully");
             }
-            return new JsonResult("Updated Successfully");
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string query = @" delete from dbo.Employee
-                where EmployeeId = " + id + @"
-                ";
+            string sqlDataSource = _configuration.GetConnectionString("RealEstateAppCon");
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            try
             {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                var conn = new SqlConnection(sqlDataSource);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                using (cmd = new SqlCommand("Property_DeleteProperty", conn))
                 {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@property_id", id));
+                    cmd.ExecuteNonQuery();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                 }
+                return new JsonResult("Deleted Successfully");
             }
-            return new JsonResult("Deleted Successfully");
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [Route("SaveFile")]
@@ -173,7 +191,7 @@ namespace RealEstateWebApi.Controllers
                 var httpRequest = Request.Form;
                 var postedFile = httpRequest.Files[0];
                 string fileName = postedFile.FileName;
-                var physicalPath = _env.ContentRootPath + "/Photos/" + fileName;
+                var physicalPath = _env.ContentRootPath + "/ImagesUpload/" + fileName;
 
                 using (var stream = new FileStream(physicalPath, FileMode.Create))
                 {
@@ -184,29 +202,8 @@ namespace RealEstateWebApi.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("anonymous.png");
+                return new JsonResult("noImage.jpg");
             }
-        }
-
-        [Route("GetAllDepartmentNames")]
-        public JsonResult GetAllDepartmentNames()
-        {
-            string query = @"select DepartmentName from dbo.Department";
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult(table);
         }
 
         [Route("Id")]
@@ -214,28 +211,35 @@ namespace RealEstateWebApi.Controllers
 
         public JsonResult GetEmployeeById(int id)
         {
-            string query = @"select EmployeeName, Department, 
-        convert(varchar(10),DateOfJoining,120) as DateOfJoining, PhotoFileName
-            from dbo.Employee where EmployeeId = " + id;
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            try
             {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                string sqlDataSource = _configuration.GetConnectionString("RealEstateAppCon");
+                var conn = new SqlConnection(sqlDataSource);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                using (cmd = new SqlCommand("Property_GetPropertyById", conn))
                 {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@property_id", id));
+                    cmd.ExecuteNonQuery();
+
+                    using (SqlDataReader oReader = cmd.ExecuteReader())
+                    {
+                        table.Load(oReader);
+
+                        conn.Close();
+
+                        return new JsonResult(table);
+                    }
                 }
             }
-            return new JsonResult(table);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-
-    }
-}
 
     }
 }

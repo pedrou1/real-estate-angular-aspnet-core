@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Equipo\\Inmobiliaria\\RealEstateWebApi\\RealEstateWebApi\\RealEstateWebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Equipo\\Documents\\RealEstate\\RealEstateWebApi\\RealEstateWebApi\\RealEstateWebApi.csproj",
       "projectName": "RealEstateWebApi",
-      "projectPath": "C:\\Users\\Equipo\\Inmobiliaria\\RealEstateWebApi\\RealEstateWebApi\\RealEstateWebApi.csproj",
+      "projectPath": "C:\\Users\\Equipo\\Documents\\RealEstate\\RealEstateWebApi\\RealEstateWebApi\\RealEstateWebApi.csproj",
       "packagesPath": "C:\\Users\\Equipo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Equipo\\Inmobiliaria\\RealEstateWebApi\\RealEstateWebApi\\obj\\",
+      "outputPath": "C:\\Users\\Equipo\\Documents\\RealEstate\\RealEstateWebApi\\RealEstateWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Equipo\\AppData\\Roaming\\NuGet\\NuGet.Config",

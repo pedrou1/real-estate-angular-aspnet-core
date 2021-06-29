@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J1J3gR6TEc6R3H0cfslOsQLIoNzdzdEb+DlW2DdvxOx2RI66VTE8XXizDKl5Q9i6Ym9fU/RELQNcYpjcQMAG7A==",
+  "dgSpecHash": "lJgyKDGv++46N5tksRZaKtGL7mP0e/gWw4Uk69vAuI0upbCpIy4BXAG6IxHj6mPa2qthJieEw3QLHCiNkQMplA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Equipo\\Inmobiliaria\\RealEstateWebApi\\RealEstateWebApi\\RealEstateWebApi.csproj",
+  "projectFilePath": "C:\\Users\\Equipo\\Documents\\RealEstate\\RealEstateWebApi\\RealEstateWebApi\\RealEstateWebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Equipo\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.10\\microsoft.aspnetcore.jsonpatch.3.1.10.nupkg.sha512",
     "C:\\Users\\Equipo\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.10\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.10.nupkg.sha512",
