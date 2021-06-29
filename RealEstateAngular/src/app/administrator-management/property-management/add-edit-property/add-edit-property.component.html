@@ -1,0 +1,103 @@
+
+<div class="cotainer">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <form #userForm="ngForm">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">property_type</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" [(ngModel)]="property_type" name="type" placeholder="Enter property_type"
+                                #type="ngModel" required [class.is-invalid]="type.invalid && type.touched" minlength="4">
+                            <small class="text-danger" [class.d-none]="type.valid || type.untouched || type.errors?.minlength">type is
+                                required</small>
+                            <div class="help-block">
+                                <small class="text-danger" [class.d-none]="!type.errors?.minlength || type.untouched">
+                                    type must be at least 4 characters long.
+                                </small>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">description</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="description" [(ngModel)]="description">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">city</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="city" [(ngModel)]="city">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">address</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="address" [(ngModel)]="address">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">total_bedrooms</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="total_bedrooms" [(ngModel)]="total_bedrooms">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">total_area_m2</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="total_area_m2" [(ngModel)]="total_area_m2">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">price</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="price" [(ngModel)]="price">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="phone_number" class="col-md-4 col-form-label text-md-right">Select Image</label>
+                        <div class="col-md-6">
+                            <img [src]=photo_file_path height="250px;" width="200px;">
+                            <input type="File" (change)="uploadImage($event)" class="mt-2" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12 float-right">
+                            <div class="col-md-2 float-right">
+
+                                <button type="submit" (click)="addProperty()" *ngIf="property.property_id==0" class="btn btn-primary">
+                                    Add
+                                </button>
+
+                                <button (click)="updateProperty()" *ngIf="property.property_id!=0"
+                                    class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        {{ErrorMessage}}
+                      </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

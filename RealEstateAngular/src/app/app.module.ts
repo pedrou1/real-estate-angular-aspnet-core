@@ -9,9 +9,14 @@ import { ShowUserComponent } from './administrator-management/user-management/sh
 import { AddEditUserComponent } from './administrator-management/user-management/add-edit-user/add-edit-user.component';
 import { PropertyManagementComponent } from './administrator-management/property-management/property-management.component';
 import { SharedService } from './shared.service';
+import {HttpClientModule} from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { RegisterComponent } from './authentication/forms/register/register.component';
 import { LoginComponent } from './authentication/forms/login/login.component';
+import { ShowPropertyComponent } from './administrator-management/property-management/show-property/show-property.component';
+import { AddEditPropertyComponent } from './administrator-management/property-management/add-edit-property/add-edit-property.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,11 +28,17 @@ import { LoginComponent } from './authentication/forms/login/login.component';
     PropertyManagementComponent,
     AuthenticationComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ShowPropertyComponent,
+    AddEditPropertyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

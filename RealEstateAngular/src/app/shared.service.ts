@@ -7,8 +7,8 @@ import {Observable} from 'rxjs';
 })
 export class SharedService {
 
-  readonly APIUrl= "http://localhost:5000/api";
-  readonly PhotoUrl = "http://localhost:5000/Photos/";
+  readonly APIUrl= "http://localhost:46687/api";
+  readonly PhotoUrl = "http://localhost:46687/ImagesUpload/";
 
 
   constructor(private http:HttpClient) {}
@@ -31,7 +31,7 @@ export class SharedService {
     return this.http.delete(this.APIUrl+'/Property/'+ val)
   }
 
-  uploadPhotoProperty(val:any){
+  uploadImageProperty(val:any){
     return this.http.post(this.APIUrl+'/Property/SaveFile', val)
   }
 

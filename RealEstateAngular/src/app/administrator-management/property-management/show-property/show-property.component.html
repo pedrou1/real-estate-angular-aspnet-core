@@ -1,0 +1,52 @@
+<button type="button" class="btn btn-primary float-right m-2" (click)="addClick()">
+    Add Property
+</button>
+
+<button type="button" class="btn btn-primary float-right m-2" (click)="closeClick()">Close</button>
+
+<h5 class="modal-title">{{ModalTitle}}</h5>
+
+<app-add-edit-property [property]="property" *ngIf="ActiveAddEditPropertyComp"></app-add-edit-property>
+
+<div class="cotainer">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
+            <table class="table table-striped" *ngIf="!ActiveAddEditPropertyComp">
+                <thead>
+                    <tr>
+                        <th>Property Id</th>
+                        <th>Property Type</th>
+                        <th>Description</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <th>Total_bedrooms</th>
+                        <th>Total_area_m2</th>
+                        <th>Price</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of PropertyList">
+                        <td>{{data.property_id}}</td>
+                        <td>{{data.property_type}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.city}}</td>
+                        <td>{{data.address}}</td>
+                        <td>{{data.total_bedrooms}}</td>
+                        <td>{{data.total_area_m2}}</td>
+                        <td>{{data.price}}</td>
+                        <td>
+                            <button type="button" class="btn btn-light mr-1" (click)="editClick(data)">Edit</button>
+                            <button type="button" class="btn btn-light mr-1"
+                                (click)="deleteClick(data)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
