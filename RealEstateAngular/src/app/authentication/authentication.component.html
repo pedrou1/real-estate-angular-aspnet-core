@@ -1,1 +1,14 @@
-<p>authentication works!</p>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="#" routerLink="login" *ngIf="!islogged" [routerLinkActive]="['active']" >Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" routerLink="register" *ngIf="!islogged" [routerLinkActive]="['active']">Register</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#" *ngIf="islogged">Logged in as id: {{id}}</a>
+</li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" *ngIf="islogged" (click)="logOut()">Log out</a>
+  </li>

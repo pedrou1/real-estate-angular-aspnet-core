@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-authentication',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor() { }
+  islogged:boolean;
+  id:string;
+
+  constructor(private service:AuthService) { }
 
   ngOnInit(): void {
+    this.islogged = false;
+    this.refreshAuth();
+  }
+
+  refreshAuth(){
+    this.id = localStorage.getItem('token');
+    if(localStorage.getItem('isLoggedIn') == 'true'){
+      this.islogged = true;
+    }
+  }
+
+  logOut(){
+    this.service.logout();
   }
 
 }

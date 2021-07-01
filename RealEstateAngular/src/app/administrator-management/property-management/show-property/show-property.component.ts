@@ -44,7 +44,7 @@ export class ShowPropertyComponent implements OnInit {
 
   editClick(item){
     this.property=item;
-    this.ModalTitle= "Edit Employee";
+    this.ModalTitle= "Edit Property";
     this.ActiveAddEditPropertyComp=true;
   }
 

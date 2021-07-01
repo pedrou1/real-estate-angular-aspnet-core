@@ -1,1 +1,75 @@
-<p>register works!</p>
+<div class="cotainer">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <form #userForm="ngForm">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">name</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" [(ngModel)]="name" name="nameV" placeholder="Enter name"
+                                #nameV="ngModel" required [class.is-invalid]="nameV.invalid && nameV.touched" minlength="4">
+                            <small class="text-danger" [class.d-none]="nameV.valid || nameV.untouched || nameV.errors?.minlength">name is
+                                required</small>
+                            <div class="help-block">
+                                <small class="text-danger" [class.d-none]="!nameV.errors?.minlength || nameV.untouched">
+                                    name must be at least 4 characters long.
+                                </small>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">last_name</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="last_name" [(ngModel)]="last_name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">username</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="username" [(ngModel)]="username">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">password</label>
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" name="password" [(ngModel)]="password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">is_admin</label>
+                        <div class="col-md-6">
+                            <input type="checkbox" class="form-control" name="is_admin" [(ngModel)]="is_admin">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12 float-right">
+                            <div class="col-md-2 float-right">
+
+                                <button type="submit" (click)="signUp()" class="btn btn-primary">
+                                    Sign Up
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        {{ErrorMessage}}
+                      </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

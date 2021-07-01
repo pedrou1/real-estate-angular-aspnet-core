@@ -100,5 +100,14 @@ export class AddEditPropertyComponent implements OnInit {
   checkFields():boolean {
     return this.property_type != null ? true : false;
   }
+
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
 }
 

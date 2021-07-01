@@ -1,8 +1,3 @@
-C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.csprojAssemblyReference.cache
-C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.AssemblyInfoInputs.cache
-C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.AssemblyInfo.cs
-C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.csproj.CoreCompileInputs.cache
-C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\RealEstateWebApi.exe
@@ -21,6 +16,10 @@ C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.AssemblyInfoInputs.cache
+C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.AssemblyInfo.cs
+C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.csproj.CoreCompileInputs.cache
+C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\staticwebassets\RealEstateWebApi.StaticWebAssets.Manifest.cache
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\staticwebassets\RealEstateWebApi.StaticWebAssets.xml
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\RealEstateWebApi.styles.css
@@ -29,3 +28,6 @@ C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.dll
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.pdb
 C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.genruntimeconfig.cache
+C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\obj\Debug\netcoreapp3.1\RealEstateWebApi.csprojAssemblyReference.cache
+C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\Equipo\Documents\RealEstate\RealEstateWebApi\RealEstateWebApi\bin\Debug\netcoreapp3.1\System.Web.Http.dll

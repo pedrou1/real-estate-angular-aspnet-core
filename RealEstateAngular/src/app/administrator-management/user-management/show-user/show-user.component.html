@@ -1,1 +1,46 @@
-<p>show-user works!</p>
+<button type="button" class="btn btn-primary float-right m-2" (click)="addClick()">
+    Add Property
+</button>
+
+<button type="button" class="btn btn-primary float-right m-2" (click)="closeClick()">Close</button>
+
+<h5 class="modal-title">{{ModalTitle}}</h5>
+
+<app-add-edit-user [user]="user" *ngIf="ActiveAddEditUserComp"></app-add-edit-user>
+
+<div class="cotainer">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
+            <table class="table table-striped" *ngIf="!ActiveAddEditUserComp">
+                <thead>
+                    <tr>
+                        <th>user_id</th>
+                        <th>name</th>
+                        <th>last_name</th>
+                        <th>username</th>
+                        <th>is_admin</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of UserList">
+                        <td>{{data.user_id}}</td>
+                        <td>{{data.name}}</td>
+                        <td>{{data.last_name}}</td>
+                        <td>{{data.username}}</td>
+                        <td>{{data.is_admin}}</td>
+                        <td>
+                            <button type="button" class="btn btn-light mr-1" (click)="editClick(data)">Edit</button>
+                            <button type="button" class="btn btn-light mr-1"
+                                (click)="deleteClick(data)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {SharedService} from 'src/app/shared.service';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEditUserComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private service: SharedService) { }
+
+  @Input() user: any;
+  user_id: string;
+  name: string;
+  last_name: string;
+  username: string;
+  is_admin: string;
+
+  UserList: any = [];
+
 
   ngOnInit(): void {
+
   }
 
 }
+

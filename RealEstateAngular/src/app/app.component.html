@@ -8,11 +8,12 @@
   <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="property" [routerLinkActive]="['active']">Management <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" routerLink="property" [routerLinkActive]="['active']">Management</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">User</a>
+        <a class="nav-link" href="#" routerLink="user" [routerLinkActive]="['active']">User</a>
       </li>
+        <app-authentication></app-authentication>
     </ul>
   </div>
 </div>
