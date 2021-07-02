@@ -8,6 +8,7 @@ export class AuthService {
   constructor() { }
   logout() :void {    
     localStorage.setItem('isLoggedIn','false');    
+    localStorage.setItem('isAdmin','false');  
     localStorage.removeItem('token'); 
   }
 }

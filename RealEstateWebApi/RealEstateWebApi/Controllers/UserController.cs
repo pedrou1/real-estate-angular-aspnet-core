@@ -167,9 +167,9 @@ namespace RealEstateWebApi.Controllers
             string sqlDataSource = _configuration.GetConnectionString("RealEstateAppCon");
             var conn = new SqlConnection(sqlDataSource);
             conn.Open();
-
             SqlCommand cmd = new SqlCommand();
-            int clientExist = -1;
+            UserSignInResult result = new UserSignInResult();
+            
             using (cmd = new SqlCommand("User_SignIn", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -183,14 +183,17 @@ namespace RealEstateWebApi.Controllers
                     while (oReader.Read())
                     {
 
-                        clientExist = int.Parse(oReader["user_id"].ToString());
+                        result.user_id = int.Parse(oReader["user_id"].ToString());
+                        result.is_admin = oReader["is_admin"].ToString();
                     }
+                    
                 }
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
-                return Ok(clientExist);
+                
+                return Ok(result);
             }
         }
         
@@ -238,5 +241,39 @@ namespace RealEstateWebApi.Controllers
             }
         }
 
-    }
+
+        [HttpGet("admin/{id}")]
+        public JsonResult GetUserById(int id)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                string sqlDataSource = _configuration.GetConnectionString("RealEstateAppCon");
+                var conn = new SqlConnection(sqlDataSource);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                using (cmd = new SqlCommand("User_GetUserById", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@user_id", id));
+                    cmd.ExecuteNonQuery();
+
+                    using (SqlDataReader oReader = cmd.ExecuteReader())
+                    {
+                        table.Load(oReader);
+
+                        conn.Close();
+
+                        return new JsonResult(table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        }
 }

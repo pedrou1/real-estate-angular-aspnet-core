@@ -1,3 +1,14 @@
-<button class="btn btn-primary">Manage User</button>
 
-<app-property-management></app-property-management>
+ 
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-4">
+    <div class="btn-group mb-2 mb-md-0 btn-block">
+    <button type="button" class="btn btn-outline-info btnAdmin" (click)="openPropertiesManagement()">Manage properties</button>
+    <button type="button" class="btn btn-outline-secondary btnAdmin" (click)="openUserManagement()">Manage users</button>
+    
+    </div>
+    </div>
+  </div>
+  <app-property-management *ngIf="!manageUsers"></app-property-management>
+  <app-show-user *ngIf="manageUsers"></app-show-user>
+

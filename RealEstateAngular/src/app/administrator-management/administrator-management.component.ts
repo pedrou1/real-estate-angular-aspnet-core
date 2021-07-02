@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-administrator-management',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministratorManagementComponent implements OnInit {
 
-  constructor() { }
+  manageUsers:boolean;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.openPropertiesManagement();
+  }
+
+  openPropertiesManagement(){
+    this.manageUsers = false;
+  }
+  openUserManagement(){
+    this.manageUsers = true;
   }
 
 }

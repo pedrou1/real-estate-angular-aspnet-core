@@ -17,6 +17,10 @@ import { ShowPropertyComponent } from './administrator-management/property-manag
 import { AddEditPropertyComponent } from './administrator-management/property-management/add-edit-property/add-edit-property.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { UserPropertyPublicComponent } from './user-property-public/user-property-public.component';
+import { HomeComponent } from './user-property-public/home/home.component';
+import { PropertyDetailComponent } from './user-property-public/property-detail/property-detail.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     RegisterComponent,
     LoginComponent,
     ShowPropertyComponent,
-    AddEditPropertyComponent
+    AddEditPropertyComponent,
+    UserPropertyPublicComponent,
+    HomeComponent,
+    PropertyDetailComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -6,14 +6,22 @@ import { UserManagementComponent } from './administrator-management/user-managem
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { LoginComponent } from './authentication/forms/login/login.component';
 import { RegisterComponent } from './authentication/forms/register/register.component';
+import { AuthGuard } from './authentication/guards/auth.guard';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './user-property-public/home/home.component';
+import { PropertyDetailComponent } from './user-property-public/property-detail/property-detail.component';
 
 const routes: Routes = [
-  {path: 'administrator-management' ,component:AdministratorManagementComponent},
-  {path:'property' ,component:PropertyManagementComponent},
-  {path:'user' ,component:UserManagementComponent},
+  {path: '' , redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home' ,component:HomeComponent},
+  {path: 'property-detail/:id' ,component:PropertyDetailComponent},
   { path: 'login', component: LoginComponent },
   {path:'register' ,component:RegisterComponent},
   {path:'auth' ,component:AuthenticationComponent},
+  {path: 'navbar' ,component:NavbarComponent},
+  {path: 'administrator-management' ,component:AdministratorManagementComponent, canActivate : [AuthGuard]},
+  {path:'property' ,component:PropertyManagementComponent, canActivate : [AuthGuard]},
+  {path:'user' ,component:UserManagementComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({
@@ -21,3 +29,14 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+/*
+  path: 'administrator-management', component: AdministratorManagementComponent,
+    children: [
+      {
+        path: 'property',
+        outlet: 'aboutOne',
+        component: PropertyManagementComponent,
+        canActivate : [AuthGuard]
+      }
+  ]},
+  */

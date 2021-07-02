@@ -1,5 +1,5 @@
 
-
+<ul class="navbar-nav ml-auto">
 <li class="nav-item">
     <a class="nav-link" href="#" routerLink="login" *ngIf="!islogged" [routerLinkActive]="['active']" >Login</a>
   </li>
@@ -7,8 +7,9 @@
     <a class="nav-link" href="#" routerLink="register" *ngIf="!islogged" [routerLinkActive]="['active']">Register</a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="#" *ngIf="islogged">Logged in as id: {{id}}</a>
+  <a class="nav-link" href="#" *ngIf="islogged">Logged {{id}}</a>
 </li>
   <li class="nav-item">
     <a class="nav-link" href="#" *ngIf="islogged" (click)="logOut()">Log out</a>
   </li>
+</ul>

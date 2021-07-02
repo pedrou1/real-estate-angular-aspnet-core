@@ -40,6 +40,7 @@ export class ShowPropertyComponent implements OnInit {
   closeClick(){
       this.ActiveAddEditPropertyComp=false;
       this.refreshPropertyList();
+      this.ModalTitle = "";
   }
 
   editClick(item){

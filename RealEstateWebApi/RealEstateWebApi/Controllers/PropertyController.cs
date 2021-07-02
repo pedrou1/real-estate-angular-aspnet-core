@@ -209,7 +209,7 @@ namespace RealEstateWebApi.Controllers
         [Route("Id")]
         [HttpGet("{id}")]
 
-        public JsonResult GetEmployeeById(int id)
+        public JsonResult GetPropertyById(int id)
         {
             DataTable table = new DataTable();
             try

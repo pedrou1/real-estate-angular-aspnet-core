@@ -51,8 +51,8 @@ export class SharedService {
     return this.http.post(this.APIUrl+'/User', val);
   }
 
-  signInUser(val:ILogin):Observable<any>{
-    return this.http.post(this.APIUrl+'/User/login', val);
+  signInUser(val:ILogin):Observable<any[]>{
+    return this.http.post<any[]>(this.APIUrl+'/User/login', val);
   }
 
   userExists(username:string):Observable<any>{
@@ -67,8 +67,8 @@ export class SharedService {
     return this.http.delete(this.APIUrl+'/User/'+ val);
   }
 
-  getEmployeeById(val:any):Observable<any>{
-    return this.http.get(this.APIUrl+'/User/'+val);
+  getUserById(val:any):Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+'/User/admin/'+val);
   }
 
   

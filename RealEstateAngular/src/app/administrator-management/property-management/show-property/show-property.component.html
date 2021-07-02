@@ -1,17 +1,17 @@
-<button type="button" class="btn btn-primary float-right m-2" (click)="addClick()">
-    Add Property
-</button>
 
-<button type="button" class="btn btn-primary float-right m-2" (click)="closeClick()">Close</button>
-
-<h5 class="modal-title">{{ModalTitle}}</h5>
-
-<app-add-edit-property [property]="property" *ngIf="ActiveAddEditPropertyComp"></app-add-edit-property>
 
 <div class="cotainer">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            
+
+            <button type="button" class="btn btn-primary float-right m-2" (click)="addClick()">
+                Add Property
+            </button>
+            <button type="button" class="btn btn-primary float-right m-2" (click)="closeClick()">Close</button>
+
+            <h5 class="modal-title text-center mt-3">{{ModalTitle}}</h5>
+            <app-add-edit-property [property]="property" *ngIf="ActiveAddEditPropertyComp"></app-add-edit-property>
+
             <table class="table table-striped" *ngIf="!ActiveAddEditPropertyComp">
                 <thead>
                     <tr>

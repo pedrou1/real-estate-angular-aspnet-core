@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 import { Iuser } from '../../interfaces/iuser';
 
@@ -9,7 +10,7 @@ import { Iuser } from '../../interfaces/iuser';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private sharedService:SharedService) { }
+  constructor(private sharedService:SharedService,private router: Router) { }
 
   name:string;
   last_name:string;
@@ -21,6 +22,9 @@ export class RegisterComponent implements OnInit {
   ErrorMessage:string = "";
 
   ngOnInit(): void {
+    if(localStorage.getItem('isLoggedIn') == 'true'){
+      this.router.navigate(['home']);
+    }
   }
 
   signUp(){

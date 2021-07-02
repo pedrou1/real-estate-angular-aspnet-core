@@ -1,0 +1,40 @@
+<div class="container px-4 px-lg-5 my-5">
+    <h3 *ngIf="!isFound">PROPERTY NOT FOUND</h3>
+    <div class="row gx-4 gx-lg-5 align-items-center" *ngFor="let dataItem of PropertyList">
+        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" [src]=propPhotourl+dataItem.photo_file_name alt="..." /></div>
+        <div class="col-md-6">
+            
+            <h1 class="display-5 fw-bolder">{{dataItem.property_type}}</h1>
+            <div class="small mb-1">{{dataItem.city}}</div>
+            <div class="fs-5 mb-5">
+                <span class="price">${{dataItem.price}}</span>
+            </div>
+            <p class="lead">{{dataItem.description}}</p>
+    <div class="row">
+        <div class="col-sm-6">
+            
+            <strong class="pl-0 w-25">City:</strong>
+            <p class="lead"> {{dataItem.city}}</p>
+            <strong class="pl-0 w-25">Address:</strong>
+            <p class="lead">{{dataItem.address}}</p>
+            <strong class="pl-0 w-25">Total Bedrooms:</strong>
+            <p class="lead">{{dataItem.total_bedrooms}}</p>
+        </div>
+        <div class="col-sm-6">
+            <strong class="pl-0 w-25">Area:</strong>
+            <p class="lead"> {{dataItem.total_area_m2}} m2</p>
+            <strong class="pl-0 w-25">Type:</strong>
+            <p class="lead">{{dataItem.property_type}}</p>
+        </div>
+    </div>
+
+            <div class="d-flex">
+                <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <i class="bi-cart-fill me-1"></i>
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
