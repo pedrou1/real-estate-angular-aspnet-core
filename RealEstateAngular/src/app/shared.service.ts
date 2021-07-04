@@ -15,7 +15,7 @@ export class SharedService {
 
   constructor(private http:HttpClient) {}
 
-  //Department
+  //Property
 
   getPropertyList():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/Property');
@@ -68,9 +68,8 @@ export class SharedService {
   }
 
   getUserById(val:any):Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl+'/User/admin/'+val);
+    return this.http.get<any>(this.APIUrl+'/User/admin/'+val);
   }
-
   
 
 }

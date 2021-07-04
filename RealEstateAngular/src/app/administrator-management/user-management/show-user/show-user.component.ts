@@ -14,6 +14,7 @@ export class ShowUserComponent implements OnInit {
   ModalTitle:string;
   ActiveAddEditUserComp:boolean=false;
   user:any;
+  editingForm:boolean = true;
 
 
   ngOnInit(): void {
@@ -31,22 +32,25 @@ export class ShowUserComponent implements OnInit {
     }
     this.ModalTitle="Add User";
     this.ActiveAddEditUserComp=true;
+    this.editingForm = false;
   }
 
   closeClick(){
       this.ActiveAddEditUserComp=false;
       this.refreshUserList();
+      this.editingForm = true;
   }
 
   editClick(item){
     this.user=item;
     this.ModalTitle= "Edit User";
     this.ActiveAddEditUserComp=true;
+    this.editingForm = false;
   }
 
   deleteClick(item){
-    if(confirm('Are you sure?')){
-      this.service.deleteUser(item.property_id).subscribe(data=>{
+    if(confirm("Are you sure?")){
+      this.service.deleteUser(item.user_id).subscribe(data=>{
         alert(data.toString());
         this.refreshUserList();
       })

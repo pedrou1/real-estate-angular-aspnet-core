@@ -1,1 +1,88 @@
-<p>add-edit-user works!</p>
+
+                
+                <div class="col-md-10">
+                    <form [formGroup]="formUser">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
+                                <div class="help-block">
+                                    <small class="text-danger"
+                                    *ngIf="getControl.name.errors?.minlength && getControl.name.touched">
+                                    Name must be at least 4 characters long.
+                                    </small>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Last name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter Last name" formControlName="last_name">
+                                <div class="help-block">
+                                    <small class="text-danger"
+                                    *ngIf="getControl.last_name.errors?.minlength && getControl.last_name.touched">
+                                    Last name must be at least 4 characters long.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Username</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter username" formControlName="username">
+                                <div class="help-block">
+                                    <small class="text-danger"
+                                    *ngIf="getControl.username.errors?.minlength && getControl.username.touched">
+                                    Username must be at least 4 characters long.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter password" formControlName="password">
+                                <div class="help-block">
+                                    <small class="text-danger"
+                                    *ngIf="getControl.password.errors?.minlength && getControl.password.touched">
+                                    Password invalid.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Is admin</label>
+                            <div class="col-md-6">
+                                <input type="checkbox" class="form-control" formControlName="is_admin">
+                            </div>
+                        </div>
+    
+                        <div class="form-group row">
+                            <div class="col-md-12 float-right">
+                                <div class="col-md-2 float-right">
+    
+                                    <button type="submit" (click)="addUser()" *ngIf="user.user_id==0" class="btn btn-primary" [disabled]="formUser.invalid">
+                                        Add
+                                    </button>
+    
+                                    <button *ngIf="user.user_id!=0"
+                                        class="btn btn-primary" (click)="updateUser()" [disabled]="formUser.invalid">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger" role="alert">
+                            {{ErrorMessage}}
+                          </div>
+                    </div>
+                </form>
+    
+    
+            </div>

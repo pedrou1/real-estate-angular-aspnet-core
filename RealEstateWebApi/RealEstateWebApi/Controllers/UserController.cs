@@ -186,7 +186,6 @@ namespace RealEstateWebApi.Controllers
                         result.user_id = int.Parse(oReader["user_id"].ToString());
                         result.is_admin = oReader["is_admin"].ToString();
                     }
-                    
                 }
                 if (conn.State == ConnectionState.Open)
                 {

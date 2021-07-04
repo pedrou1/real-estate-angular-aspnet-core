@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
-import { Validators } from '@angular/forms'; 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-property',
@@ -10,39 +10,40 @@ import { Validators } from '@angular/forms';
 export class AddEditPropertyComponent implements OnInit {
 
  
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService, private fb: FormBuilder) { }
 
   @Input() property:any;
   property_id:string;
-  property_type:string;
-  description:string;
-  city:string;
-  address:string;
-  total_bedrooms:string;
-  total_area_m2:string;
-  price:string;
   photo_file_name:string;
   photo_file_path:string;
+  formProperty: FormGroup;
 
   PropertyList:any=[];
 
   ErrorMessage:string = "";
 
   ngOnInit(): void {
+
+    this.setForm();
     this.loadPropertyList();
   }
 
   loadPropertyList(){
     this.service.getPropertyList().subscribe((data:any)=>{
+      
       this.PropertyList=data;
+
+      this.formProperty.patchValue({
+        property_type: this.property.property_type, 
+        description: this.property.description, 
+        city: this.property.city, 
+        address: this.property.address, 
+        total_bedrooms: this.property.total_bedrooms, 
+        total_area_m2: this.property.total_area_m2, 
+        price: this.property.price
+      });
+
       this.property_id = this.property.property_id;
-      this.property_type = this.property.property_type;
-      this.description = this.property.description;
-      this.city = this.property.city;
-      this.address = this.property.address;
-      this.total_bedrooms = this.property.total_bedrooms;
-      this.total_area_m2 = this.property.total_area_m2;
-      this.price = this.property.price;
       this.photo_file_name = this.property.photo_file_name;
       this.photo_file_path = this.service.PhotoUrl+this.photo_file_name;
     })
@@ -62,6 +63,7 @@ export class AddEditPropertyComponent implements OnInit {
       if (this.checkFields()) {
         this.service.addProperty(val).subscribe(res => {
           alert(res.toString());
+          this.setForm();
         });
       }
       else {
@@ -108,6 +110,73 @@ export class AddEditPropertyComponent implements OnInit {
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
       event.preventDefault();
     }
+  }
+
+  setForm(){
+
+    this.formProperty = this.fb.group({
+      property_type: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      description: ['', [
+        Validators.required,
+        Validators.minLength(10)
+      ]],
+      city: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      address: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      total_bedrooms: ['', [
+        Validators.required,
+        Validators.minLength(1)
+      ]],
+      total_area_m2: ['', [
+        Validators.required,
+        Validators.minLength(1)
+      ]],
+      price: ['', [
+        Validators.required,
+        Validators.minLength(2)
+      ]]
+    })
+
+  }
+  
+  get getControl(){
+    return this.formProperty.controls;
+  }
+    
+  get property_type(){
+    return this.formProperty.get('property_type').value
+  }
+
+  get description(){
+    return this.formProperty.get('description').value
+  }
+
+  get city(){
+    return this.formProperty.get('city').value
+  }
+
+  get address(){
+    return this.formProperty.get('address').value
+  }
+
+  get total_bedrooms(){
+    return this.formProperty.get('total_bedrooms').value
+  }
+  
+  get total_area_m2(){
+    return this.formProperty.get('total_area_m2').value
+  }
+
+  get price(){
+    return this.formProperty.get('price').value
   }
 }
 

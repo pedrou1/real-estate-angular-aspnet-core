@@ -1,39 +1,46 @@
 
-<div class="container">
-    <div class="col-md-6 col-md-offset-3 loginBox">
-        <form #userForm="ngForm" (ngSubmit)="login()">
+<div class="cotainer">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-4">
+        <form [formGroup]="formLogin" (ngSubmit)="login()">
             <div class="card-body">
                 <div class="form-group row">
                     <label class="col-md-4 col-form-label text-md-right">Username</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" [(ngModel)]="Username" name="username"
-                            placeholder="Enter Username" #username="ngModel" required
-                            [class.is-invalid]="username.invalid && username.touched" minlength="4">
-                        <small class="text-danger"
-                            [class.d-none]="username.valid || username.untouched || username.errors?.minlength">Username
-                            is
-                            required</small>
+                        
+                        <input type="text" class="form-control" placeholder="Enter Username" formControlName="username">
                         <div class="help-block">
                             <small class="text-danger"
-                                [class.d-none]="!username.errors?.minlength || username.untouched">
+                            *ngIf="getControl.username.errors?.minlength && getControl.username.touched">
                                 Username must be at least 4 characters long.
                             </small>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-md-4 col-form-label text-md-right">Password</label>
                     <div class="col-md-6">
-                        <input type="password" class="form-control" name="description" [(ngModel)]="Password">
+                        <input type="password" class="form-control" name="description" placeholder="Enter password" formControlName="password">
+                        <div class="help-block">
+                            <small class="text-danger"
+                            *ngIf="getControl.password.errors?.minlength && getControl.password.touched">
+                                Password must be at least 5 characters long.
+                            </small>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-xs-12 form-group text-right">
-                    <button class="btn btn-success" type="submit">Login</button>
+                    <button class="btn btn-success" type="submit" [disabled]="formLogin.invalid">Login</button>
                 </div>
+                <div class="alert alert-danger" role="alert">
+                    {{ErrorMessage}}
+                  </div>
             </div>
         </form>
     </div>
 </div>
+</div>
+

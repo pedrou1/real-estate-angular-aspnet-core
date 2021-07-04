@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AuthenticationComponent implements OnInit {
   islogged:boolean;
   id:string;
 
-  constructor(private service:AuthService) { }
+  constructor(private service:AuthService, private router:Router) { }
 
   ngOnInit(): void {
     this.islogged = false;
@@ -19,7 +20,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   refreshAuth(){
-    this.id = localStorage.getItem('token');
     if(localStorage.getItem('isLoggedIn') == 'true'){
       this.islogged = true;
     }
@@ -27,6 +27,10 @@ export class AuthenticationComponent implements OnInit {
 
   logOut(){
     this.service.logout();
+  }
+
+  goToProfile(){
+    this.router.navigate(['profile']);
   }
 
 }

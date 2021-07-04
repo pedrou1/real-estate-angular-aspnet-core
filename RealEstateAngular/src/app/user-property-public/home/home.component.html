@@ -1,17 +1,17 @@
 <div class="container d-flex justify-content-center mt-50 mb-50">
     <div class="row">
-        <div class="col-md-4 mt-2" *ngFor="let dataItem of PropertyList">
+        <div class="col-md-4 mt-4 mb-4" *ngFor="let dataItem of PropertyList">
             <div class="card">
                 <div class="card-body">
                     <div class="card-img-actions">
-                        <img [src]=propPhotourl+dataItem.photo_file_name class="card-img img-fluid" width="96" height="350" alt="">
+                        <img [src]=propPhotourl+dataItem.photo_file_name class="card-img img-fluid pointerC" (click)="onSelect(dataItem)" width="96" height="350" alt="">
                     </div>
                 </div>
                 <div class="card-body bg-light text-center">
                     <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#"
-                                class="text-default mb-2">{{dataItem.property_type}}</a> </h6> <a href="#"
-                            class="text-muted">{{dataItem.city}}</a>
+                        <h6 class="font-weight-semibold mb-2"> 
+                            <a class="text-default mb-2 pointerC" (click)="onSelect(dataItem)">{{dataItem.property_type}}</a> </h6> 
+                                <a class="text-muted">{{dataItem.city}}</a>
                     </div>
                     <h5 class="mb-0 font-weight-semibold">${{dataItem.price}}</h5>
                     <button (click)="onSelect(dataItem)" type="button" class="btn btn-outline-dark mt-4"> See

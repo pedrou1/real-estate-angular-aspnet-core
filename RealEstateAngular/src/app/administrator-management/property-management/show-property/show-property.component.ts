@@ -14,6 +14,7 @@ export class ShowPropertyComponent implements OnInit {
   ModalTitle:string;
   ActiveAddEditPropertyComp:boolean=false;
   property:any;
+  editingForm:boolean = true;
 
 
   ngOnInit(): void {
@@ -35,22 +36,25 @@ export class ShowPropertyComponent implements OnInit {
     }
     this.ModalTitle="Add Property";
     this.ActiveAddEditPropertyComp=true;
+    this.editingForm = false;
   }
 
   closeClick(){
       this.ActiveAddEditPropertyComp=false;
       this.refreshPropertyList();
       this.ModalTitle = "";
+      this.editingForm = true;
   }
 
   editClick(item){
     this.property=item;
     this.ModalTitle= "Edit Property";
     this.ActiveAddEditPropertyComp=true;
+    this.editingForm = false;
   }
 
   deleteClick(item){
-    if(confirm('Are you sure?')){
+    if(confirm("Are you sure?")){
       this.service.deleteProperty(item.property_id).subscribe(data=>{
         alert(data.toString());
         this.refreshPropertyList();

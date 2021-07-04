@@ -14,6 +14,12 @@ export class AdministratorManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.openPropertiesManagement();
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
   }
 
   openPropertiesManagement(){

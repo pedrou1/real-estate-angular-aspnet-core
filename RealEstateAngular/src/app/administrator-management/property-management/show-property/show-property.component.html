@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <button type="button" class="btn btn-primary float-right m-2" (click)="addClick()">
+            <button type="button" class="btn btn-primary float-right m-2" *ngIf="editingForm" (click)="addClick()">
                 Add Property
             </button>
             <button type="button" class="btn btn-primary float-right m-2" (click)="closeClick()">Close</button>

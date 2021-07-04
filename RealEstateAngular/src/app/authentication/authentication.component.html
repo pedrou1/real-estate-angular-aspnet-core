@@ -7,7 +7,7 @@
     <a class="nav-link" href="#" routerLink="register" *ngIf="!islogged" [routerLinkActive]="['active']">Register</a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="#" *ngIf="islogged">Logged {{id}}</a>
+  <a class="nav-link profile" *ngIf="islogged" (click)="goToProfile()">Profile</a>
 </li>
   <li class="nav-item">
     <a class="nav-link" href="#" *ngIf="islogged" (click)="logOut()">Log out</a>

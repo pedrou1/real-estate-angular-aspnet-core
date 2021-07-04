@@ -15,12 +15,13 @@ import { RegisterComponent } from './authentication/forms/register/register.comp
 import { LoginComponent } from './authentication/forms/login/login.component';
 import { ShowPropertyComponent } from './administrator-management/property-management/show-property/show-property.component';
 import { AddEditPropertyComponent } from './administrator-management/property-management/add-edit-property/add-edit-property.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { UserPropertyPublicComponent } from './user-property-public/user-property-public.component';
 import { HomeComponent } from './user-property-public/home/home.component';
 import { PropertyDetailComponent } from './user-property-public/property-detail/property-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbCollapseModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

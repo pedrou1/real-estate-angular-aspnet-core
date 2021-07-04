@@ -15,14 +15,17 @@ export class HomeComponent implements OnInit {
   constructor(private sharedService:SharedService,private router: Router) { }
 
   ngOnInit(): void {
-    this.refreshPropertyList();
     if(localStorage.getItem('isLoggedIn') == 'true'){
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
       location.reload() 
     } else {
       localStorage.removeItem('foo') 
+      this.refreshPropertyList();
     }
+  }
+  else{
+    this.refreshPropertyList();
   }
   }
 
