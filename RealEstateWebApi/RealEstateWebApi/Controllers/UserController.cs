@@ -199,7 +199,7 @@ namespace RealEstateWebApi.Controllers
 
         [HttpGet("Username/{username}")]
 
-        public IActionResult userExists([System.Web.Http.FromUri] string username)
+        public IActionResult userExists(string username)
         {
             DataTable table = new DataTable();
             try

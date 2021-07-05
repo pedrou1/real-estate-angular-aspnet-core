@@ -69,6 +69,7 @@ namespace RealEstateWebApi
                     Path.Combine(Directory.GetCurrentDirectory(), "ImagesUpload")),
                 RequestPath = "/ImagesUpload"
             });
+
         }
     }
 }

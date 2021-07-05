@@ -10,7 +10,7 @@ import { SharedService } from 'src/app/shared.service';
 export class HomeComponent implements OnInit {
 
   PropertyList:any=[];
-  propPhotourl:string = "http://localhost:46687/ImagesUpload/"
+  propPhotourl:string = "https://realestate.azurewebsites.net/ImagesUpload/"
 
   constructor(private sharedService:SharedService,private router: Router) { }
 

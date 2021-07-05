@@ -12,7 +12,7 @@ export class PropertyDetailComponent implements OnInit {
   propertyId:number;
   PropertyList:any=[];
   isFound:boolean = true;
-  propPhotourl:string = "http://localhost:46687/ImagesUpload/"
+  propPhotourl:string = "https://realestate.azurewebsites.net/ImagesUpload/"
 
   constructor(private route:ActivatedRoute,private sharedService:SharedService) { }
 

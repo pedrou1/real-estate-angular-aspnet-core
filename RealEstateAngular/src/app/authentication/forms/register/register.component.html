@@ -3,83 +3,80 @@
         <div class="col-md-8">
             <div class="card mt-4">
                 <form [formGroup]="formRegister" (ngSubmit)="signUp()">
-                <div class="card-body">
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Name</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
-                            
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
+
                                 <small class="text-danger"
-                                *ngIf="getControl.name.errors?.minlength && getControl.name.touched">
+                                    *ngIf="getControl.name.errors?.minlength && getControl.name.touched">
                                     Name must be at least 4 characters long.
                                 </small>
-                           
-                        
-                        </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Last name</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Enter last name" formControlName="last_name">
-                            
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Last name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter last name"
+                                    formControlName="last_name">
+
                                 <small class="text-danger"
-                                *ngIf="getControl.last_name.errors?.minlength && getControl.last_name.touched">
+                                    *ngIf="getControl.last_name.errors?.minlength && getControl.last_name.touched">
                                     Last name must be at least 4 characters long.
                                 </small>
                             </div>
-                       
-                    </div>
 
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Username</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Enter username" formControlName="username">
-                            <small class="text-danger"
-                            *ngIf="getControl.username.errors?.minlength && getControl.username.touched">
-                            Username must be at least 4 characters long.
-                            </small>
                         </div>
-                        
-                           
-                        
-                    </div>
 
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Password</label>
-                        <div class="col-md-6">
-                            <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
-                            <small class="text-danger"
-                            *ngIf="getControl.password.errors?.minlength && getControl.password.touched">
-                            Password must be at least 5 characters long.
-                            </small>
-                        </div>
-                        
-                           
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-12 float-right">
-                            <div class="col-md-2 float-right">
-
-                                <button type="submit" class="btn btn-primary" [disabled]="formRegister.invalid">
-                                    Sign Up
-                                </button>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Username</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter username"
+                                    formControlName="username">
+                                <small class="text-danger"
+                                    *ngIf="getControl.username.errors?.minlength && getControl.username.touched">
+                                    Username must be at least 4 characters long.
+                                </small>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" placeholder="Enter password"
+                                    formControlName="password">
+                                <small class="text-danger"
+                                    *ngIf="getControl.password.errors?.minlength && getControl.password.touched">
+                                    Password must be at least 5 characters long.
+                                </small>
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 float-right">
+                                <div class="col-md-2 float-right">
+
+                                    <button type="submit" class="btn btn-primary" [disabled]="formRegister.invalid">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert" role="alert">
+                            Be aware! Password are stored in plain text, no encryption is provided.
+                        </div>
+                        <div class="alert alert-danger" role="alert">
+                            {{ErrorMessage}}
+                        </div>
                     </div>
-                    <div class="alert alert-danger" role="alert">
-                        {{ErrorMessage}}
-                      </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-

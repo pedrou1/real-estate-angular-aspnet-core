@@ -9,8 +9,8 @@ import { ILogin } from './authentication/interfaces/ilogin';
 })
 export class SharedService {
 
-  readonly APIUrl= "http://localhost:46687/api";
-  readonly PhotoUrl = "http://localhost:46687/ImagesUpload/";
+  readonly APIUrl= "https://realestate.azurewebsites.net/api";
+  readonly PhotoUrl = "https://realestate.azurewebsites.net/ImagesUpload/";
 
 
   constructor(private http:HttpClient) {}
