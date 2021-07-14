@@ -2,11 +2,11 @@
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#" routerLink="home">Real estate</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarc"
-            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation" id="dropdownMenuButton">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarc">
+        <div class="collapse navbar-collapse" id="navbarc" aria-labelledby="dropdownMenuButton">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#" routerLink="home" [routerLinkActive]="['active']">Home</a>

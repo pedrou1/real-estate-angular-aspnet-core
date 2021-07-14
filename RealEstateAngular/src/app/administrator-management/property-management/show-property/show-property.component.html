@@ -12,7 +12,7 @@
             <h5 class="modal-title text-center mt-3">{{ModalTitle}}</h5>
             <app-add-edit-property [property]="property" *ngIf="ActiveAddEditPropertyComp"></app-add-edit-property>
 
-            <table class="table table-striped" *ngIf="!ActiveAddEditPropertyComp">
+            <table class="table-responsive-md table-striped" *ngIf="!ActiveAddEditPropertyComp">
                 <thead>
                     <tr>
                         <th>Property Id</th>

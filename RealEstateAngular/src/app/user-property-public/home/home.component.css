@@ -1,3 +1,13 @@
 .pointerC {
     cursor: pointer;
 }
+
+.divider {
+    max-width: 1.25rem;
+    border-width: .2rem;
+    border-color: #040404;
+}
+
+.homeTitle {
+    text-align: center !important;
+}

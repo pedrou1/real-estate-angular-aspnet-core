@@ -27,14 +27,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-/*
-  path: 'administrator-management', component: AdministratorManagementComponent,
-    children: [
-      {
-        path: 'property',
-        outlet: 'aboutOne',
-        component: PropertyManagementComponent,
-        canActivate : [AuthGuard]
-      }
-  ]},
-  */
+
