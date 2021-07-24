@@ -12,7 +12,7 @@ export class ShowPropertyComponent implements OnInit {
 
   PropertyList:any=[];
   ModalTitle:string;
-  ActiveAddEditPropertyComp:boolean=false;
+  ActiveAddEditPropertyComp:boolean=false; // show/hide component if editing or adding 
   property:any;
   editingForm:boolean = true;
 

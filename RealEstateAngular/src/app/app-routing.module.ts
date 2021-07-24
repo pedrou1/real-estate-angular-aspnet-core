@@ -6,6 +6,7 @@ import { LoginComponent } from './authentication/forms/login/login.component';
 import { RegisterComponent } from './authentication/forms/register/register.component';
 import { AuthGuard } from './authentication/guards/auth.guard';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CartComponent } from './user-property-public/cart/cart.component';
 import { HomeComponent } from './user-property-public/home/home.component';
 import { PropertyDetailComponent } from './user-property-public/property-detail/property-detail.component';
 import { UserProfileComponent } from './user-property-public/user-profile/user-profile.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'auth' ,component:AuthenticationComponent},
   {path: 'navbar' ,component:NavbarComponent},
   {path: 'administrator-management' ,component:AdministratorManagementComponent, canActivate : [AuthGuard]},
-  {path: 'profile' ,component:UserProfileComponent}
+  {path: 'profile' ,component:UserProfileComponent},
+  {path: 'cart' ,component:CartComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,17 @@
+.fa-shopping-cart {
+    color: #fff;
+}
+
+.numItems {
+    color: #fff;
+    font-size: 0.8rem;
+}
+.cart{
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+.cartSpan {
+    color: #fff;
+}
+

@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     this.refreshPropertyList();
   }
   }
+  
 
   refreshPropertyList(){
     this.sharedService.getPropertyList().subscribe(data =>{
@@ -37,5 +38,16 @@ export class HomeComponent implements OnInit {
 
   onSelect(property){
     this.router.navigate(['/property-detail',property.property_id])
+  }
+
+  addToCart(property){
+    this.sharedService.addItem(property);
+
+    const element = document.querySelector('#animatebutton'+property.property_id);
+    element.classList.add('animated', 'bounceIn');
+    setTimeout(function () {
+      element.classList.remove('bounceIn');
+    }, 1000);
+
   }
 }

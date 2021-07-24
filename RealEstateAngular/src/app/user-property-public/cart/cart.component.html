@@ -1,0 +1,72 @@
+<div class="empty" *ngIf="items.length < 1">
+    <div class="info">
+        <h4>You don't have any items in your cart.</h4>
+        <a routerLink="" class="btn btn-success">Start Shopping</a>
+    </div>
+</div>
+
+<ng-container *ngIf="items.length > 0">
+    <div class="container">
+        <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Shopping cart
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <table class="table table-responsive-md table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Property</th>
+                                    <th>Quantity</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Subtotal</th>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let item of items; let i = index">
+                                    <td class="col-sm-8 col-md-6">
+                                        <div>
+                                            <a class="thumbnail pull-left" href="#"><img
+                                                    [src]=propPhotourl+item.photo_file_name alt="" class="mr-3 img"></a>
+                                            <div class="media-body">
+                                                <h4>{{ item.property_id }}</h4>
+                                                <h5> {{ item.property_type }} </h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                        <input class="form-control" [value]="item.qty"
+                                            (blur)="validateInput($event, i)">
+                                    </td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong>$ {{ item.price }}</strong></td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong>$ {{ item.price * item.qty
+                                            }}</strong></td>
+                                    <td class="col-sm-1 col-md-1">
+                                        <button type="button" class="btn btn-danger" (click)="onDelete(i)">
+                                            <span class="glyphicon glyphicon-remove"></span> Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="pull-right" style="margin: 10px">
+                    <h4>Total: </h4>
+                    <h5><strong>$ {{ total }}</strong></h5>
+                    <a href="" class="btn btn-success pull-right">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-container>
+

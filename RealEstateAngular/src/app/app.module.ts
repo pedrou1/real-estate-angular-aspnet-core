@@ -21,6 +21,7 @@ import { UserPropertyPublicComponent } from './user-property-public/user-propert
 import { HomeComponent } from './user-property-public/home/home.component';
 import { PropertyDetailComponent } from './user-property-public/property-detail/property-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CartComponent } from './user-property-public/cart/cart.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     UserPropertyPublicComponent,
     HomeComponent,
     PropertyDetailComponent,
-    NavbarComponent
+    NavbarComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

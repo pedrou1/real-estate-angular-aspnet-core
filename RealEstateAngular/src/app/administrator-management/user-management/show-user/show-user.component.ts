@@ -12,7 +12,7 @@ export class ShowUserComponent implements OnInit {
 
   UserList:any=[];
   ModalTitle:string;
-  ActiveAddEditUserComp:boolean=false;
+  ActiveAddEditUserComp:boolean=false; // show/hide component if editing or adding 
   user:any;
   editingForm:boolean = true;
 

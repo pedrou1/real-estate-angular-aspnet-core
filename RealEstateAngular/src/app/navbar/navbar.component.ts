@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   isAdmin:boolean;
+  itemInCart:number;
   
-  constructor() { }
+  constructor(private service:SharedService) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('isAdmin') == "true"){
@@ -18,6 +20,9 @@ export class NavbarComponent implements OnInit {
     else{
       this.isAdmin = false;
     }
+    this.service.cartItems.subscribe(d=>{
+      this.itemInCart = d.length;
+    })
   }
 
 }

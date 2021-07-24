@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#" routerLink="home">Real estate</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarc"
@@ -15,8 +15,13 @@
                 <li class="nav-item" *ngIf="isAdmin">
                     <a class="nav-link" href="#" routerLink="administrator-management" [routerLinkActive]="['active']">Management</a>
                 </li>
+                <li class="nav-item cart" routerLink="cart" [routerLinkActive]="['active']">
+                    <span class="cartSpan"> Cart </span><i class="fas fa fa-shopping-cart"></i><span class="numItems"> {{itemInCart}} </span>
+                </li>
             </ul>
-            <app-authentication></app-authentication>
+            <app-authentication>
+                
+            </app-authentication>
         </div>
 
     </div>
