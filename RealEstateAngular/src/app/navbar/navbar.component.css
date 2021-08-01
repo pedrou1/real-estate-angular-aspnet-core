@@ -1,0 +1,10 @@
+.pointer {
+    cursor: pointer;
+}
+
+.font {
+    font-family: Poppins,sans-serif;
+    font-weight: 300;
+    font-size: .975rem;
+line-height: 1.5;
+}

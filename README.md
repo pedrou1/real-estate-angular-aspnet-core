@@ -1,4 +1,4 @@
-# Angular CRUD application with .net core RESTful Web API and SQL Server
+# Full stack Angular CRUD app .net core REST Web API & SQL Server
 
 # Real Estate property advertising and management website.
 ### Created By Pedro Urrutia
@@ -17,6 +17,7 @@ Admin only operations marked with *
  * User Update *
  * User Deletion *
  * User Profile
+ * Send Contact Form
 
 Property:
 
@@ -25,13 +26,6 @@ Property:
  * Property Update *
  * Property Deletion *
  * Property Details
-
-Extra:
-
-Upload images to backend.
-Authentication with local storage.
-Route navigation protection with route guards.
-Validations with Reactive Forms.
 
 
 ## Angular features used:
@@ -44,6 +38,3 @@ Validations with Reactive Forms.
  * Reactive Forms
  * Route Guards
  * Http Client
-
-
-

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 import { Iuser } from '../../interfaces/iuser';
+import { State } from '../../interfaces/state';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,9 @@ export class RegisterComponent implements OnInit {
   
   
   ErrorMessage:string = "";
+  hasMessage: boolean = false;
+  public StateEnum = State;
+  state:State = null;
 
   ngOnInit(): void {
 
@@ -46,16 +50,20 @@ export class RegisterComponent implements OnInit {
         this.sharedService.signUpUser(user).subscribe(res => {
           alert(res.toString());
         });
-        this.ErrorMessage = "Success"
+        this.ErrorMessage = "Success";
+        this.state = State.Success;
         this.setForm();
       }
       else {
         this.ErrorMessage = "Name invalid";
+        this.state = State.Error;
       }
     }
     else {
-      this.ErrorMessage = "Username is already taken"
+      this.ErrorMessage = "Username is already taken";
+      this.state = State.Error;
     }
+    this.hasMessage = true;
   })
     }
 

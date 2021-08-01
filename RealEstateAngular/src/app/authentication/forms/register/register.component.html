@@ -1,9 +1,10 @@
 <div class="cotainer">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mt-4">
+            <div class="card mt-4 m-2">
                 <form [formGroup]="formRegister" (ngSubmit)="signUp()">
                     <div class="card-body">
+                        <h4 class="text-center mb-3">Sign up</h4>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Name</label>
                             <div class="col-md-6">
@@ -71,7 +72,7 @@
                         <div class="alert" role="alert">
                             Be aware! Password are stored in plain text, no encryption is provided.
                         </div>
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert" role="alert" *ngIf="state != null" [ngClass]="{'alert-danger': state == StateEnum.Error, 'alert-success': state == StateEnum.Success}">
                             {{ErrorMessage}}
                         </div>
                     </div>

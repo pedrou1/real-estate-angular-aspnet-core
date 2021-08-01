@@ -3,11 +3,11 @@
     <div class="row gx-4 gx-lg-5 align-items-center" *ngFor="let dataItem of PropertyList">
         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" [src]=propPhotourl+dataItem.photo_file_name
                 alt="..." /></div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-3">
 
             <h1 class="display-5 fw-bolder">{{dataItem.property_type}}</h1>
             <div class="small mb-1">{{dataItem.city}}</div>
-            <div class="fs-5 mb-5">
+            <div class="fs-5 mb-3">
                 <span class="price">${{dataItem.price}}</span>
             </div>
             <p class="lead">{{dataItem.description}}</p>

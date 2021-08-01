@@ -110,7 +110,7 @@ export class AddEditUserComponent implements OnInit {
       ]],
       password: ['', [
         Validators.required,
-        Validators.minLength(4)
+        Validators.minLength(5)
       ]],
       is_admin: [false]
     })

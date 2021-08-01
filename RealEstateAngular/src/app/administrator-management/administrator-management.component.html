@@ -1,14 +1,12 @@
-
- 
-  <div class="row justify-content-center">
-    <div class="col-md-6 mt-4">
+<div class="row justify-content-center">
+  <div class="col-md-6 mt-4">
     <div class="btn-group mb-2 mb-md-0 btn-block">
-    <button type="button" class="btn btn-outline-info btnAdmin" (click)="openPropertiesManagement()">Manage properties</button>
-    <button type="button" class="btn btn-outline-secondary btnAdmin" (click)="openUserManagement()">Manage users</button>
-    
-    </div>
+      <button type="button" class="btn btn-outline-info btnAdmin" id="animatebuttonProp"
+        (click)="openPropertiesManagement()">Manage properties</button>
+      <button type="button" class="btn btn-outline-secondary btnAdmin" id="animatebuttonUsr"
+        (click)="openUserManagement()">Manage users</button>
     </div>
   </div>
-  <app-property-management *ngIf="!manageUsers"></app-property-management>
-  <app-show-user *ngIf="manageUsers"></app-show-user>
-
+</div>
+<app-show-property *ngIf="!manageUsers"></app-show-property>
+<app-show-user *ngIf="manageUsers"></app-show-user>

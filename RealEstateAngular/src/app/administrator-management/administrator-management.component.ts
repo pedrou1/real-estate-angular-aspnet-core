@@ -14,19 +14,24 @@ export class AdministratorManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.openPropertiesManagement();
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
-    }
   }
 
   openPropertiesManagement(){
+    this.animateButton("Prop");
     this.manageUsers = false;
   }
   openUserManagement(){
+    this.animateButton("Usr");
     this.manageUsers = true;
+  }
+
+  animateButton(type:string){
+    const element = document.querySelector('#animatebutton'+type);
+    element.classList.add('animated', 'bounceIn');
+    setTimeout(function () {
+      element.classList.remove('bounceIn');
+    }, 1000);
+
   }
 
 }

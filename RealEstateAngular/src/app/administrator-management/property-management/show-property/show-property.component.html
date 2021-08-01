@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-primary float-right m-2" *ngIf="editingForm" (click)="addClick()">
                 Add Property
             </button>
-            <button type="button" class="btn btn-primary float-right m-2" (click)="closeClick()">Close</button>
+            <button type="button" class="btn btn-primary float-right m-2" id="animatebutton" (click)="closeClick()">Close</button>
 
             <h5 class="modal-title text-center mt-3">{{ModalTitle}}</h5>
             <app-add-edit-property [property]="property" *ngIf="ActiveAddEditPropertyComp"></app-add-edit-property>
@@ -37,8 +37,8 @@
                         <td>{{data.total_area_m2}}</td>
                         <td>{{data.price}}</td>
                         <td>
-                            <button type="button" class="btn btn-light mr-1" (click)="editClick(data)">Edit</button>
-                            <button type="button" class="btn btn-light mr-1"
+                            <button type="button" class="btn btn-info m-1" (click)="editClick(data)">Edit</button>
+                            <button type="button" class="btn btn-danger m-1"
                                 (click)="deleteClick(data)">Delete</button>
                         </td>
                     </tr>

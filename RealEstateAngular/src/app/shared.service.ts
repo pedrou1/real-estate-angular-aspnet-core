@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Iuser } from './authentication/interfaces/iuser';
 import { ILogin } from './authentication/interfaces/ilogin';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,25 @@ export class SharedService {
 
   readonly APIUrl= "https://realestate.azurewebsites.net/api";
   readonly PhotoUrl = "https://realestate.azurewebsites.net/ImagesUpload/";
+  readonly contactScript = "https://script.google.com/macros/s/AKfycbwMnqPm3OW0dg7CV-FQx5TxfNKlH3eoxz4GsA-KvQ/exec";
 
 
   constructor(private http:HttpClient) {}
+
+  sendContactToEmail(val: any) {
+    return this.http.post(this.contactScript, val, { responseType: 'text' }).pipe(
+      map(
+        (response) => {
+          if (response) {
+            return response;
+          }
+        },
+        (error: any) => {
+          return error;
+        }
+      )
+    );
+  }
 
   //Property
 

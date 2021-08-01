@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container px-4 px-lg-5">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container px-4 px-lg-5 font">
         <a class="navbar-brand" href="#" routerLink="home">Real estate</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarc"
             aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation" id="dropdownMenuButton">
@@ -12,11 +12,34 @@
                     <a class="nav-link" href="#" routerLink="home" [routerLinkActive]="['active']">Home</a>
                 </li>
 
-                <li class="nav-item" *ngIf="isAdmin">
+                <li class="nav-item" *ngIf="!admin">
+                  <a class="nav-link" href="#" routerLink="about" [routerLinkActive]="['active']">About us</a>
+                </li>
+
+                <li class="nav-item" *ngIf="!admin">
+                  <a class="nav-link" href="#" routerLink="contact" [routerLinkActive]="['active']">Contact</a>
+                </li>
+
+                <li class="nav-item" *ngIf="admin">
                     <a class="nav-link" href="#" routerLink="administrator-management" [routerLinkActive]="['active']">Management</a>
                 </li>
             </ul>
-            <app-authentication></app-authentication>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="login" *ngIf="!islogged" [routerLinkActive]="['active']" >Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="register" *ngIf="!islogged" [routerLinkActive]="['active']">Register</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link pointer" *ngIf="islogged" (click)="goToProfile()">Profile</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" *ngIf="islogged" (click)="logOut()">Log out</a>
+                  </li>
+                </ul>
+
         </div>
 
     </div>

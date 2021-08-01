@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/authentication/services/auth.service';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -12,21 +13,11 @@ export class HomeComponent implements OnInit {
   PropertyList:any=[];
   propPhotourl:string = "https://realestate.azurewebsites.net/ImagesUpload/"
 
-  constructor(private sharedService:SharedService,private router: Router) { }
+  constructor(private sharedService:SharedService,private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('isLoggedIn') == 'true'){
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
-      this.refreshPropertyList();
-    }
-  }
-  else{
     this.refreshPropertyList();
-  }
+    this.auth.updateNavbar();
   }
 
   refreshPropertyList(){

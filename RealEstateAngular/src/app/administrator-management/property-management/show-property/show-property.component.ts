@@ -40,6 +40,7 @@ export class ShowPropertyComponent implements OnInit {
   }
 
   closeClick(){
+      this.animateButton();
       this.ActiveAddEditPropertyComp=false;
       this.refreshPropertyList();
       this.ModalTitle = "";
@@ -66,6 +67,15 @@ export class ShowPropertyComponent implements OnInit {
     this.service.getPropertyList().subscribe(data =>{
       this.PropertyList=data;
     })
+  }
+
+  animateButton(){
+    const element = document.querySelector('#animatebutton');
+    element.classList.add('animated', 'bounceIn');
+    setTimeout(function () {
+      element.classList.remove('bounceIn');
+    }, 1000);
+
   }
 
 }

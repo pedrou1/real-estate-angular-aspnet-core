@@ -39,6 +39,7 @@ export class ShowUserComponent implements OnInit {
       this.ActiveAddEditUserComp=false;
       this.refreshUserList();
       this.editingForm = true;
+      this.animateButton();
   }
 
   editClick(item){
@@ -61,6 +62,15 @@ export class ShowUserComponent implements OnInit {
     this.service.getUserList().subscribe(data =>{
       this.UserList=data;
     })
+  }
+
+  animateButton(){
+    const element = document.querySelector('#animatebutton');
+    element.classList.add('animated', 'bounceIn');
+    setTimeout(function () {
+      element.classList.remove('bounceIn');
+    }, 1000);
+
   }
 
 }

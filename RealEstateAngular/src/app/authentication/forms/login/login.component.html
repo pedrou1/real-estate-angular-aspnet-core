@@ -1,14 +1,15 @@
 <div class="cotainer">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mt-4">
+            <div class="card mt-4 m-2">
                 <form [formGroup]="formLogin" (ngSubmit)="login()">
                     <div class="card-body">
+                        <h4 class="text-center mb-3">Log in</h4>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Username</label>
                             <div class="col-md-6">
 
-                                <input type="text" class="form-control" placeholder="Enter Username"
+                                <input type="text" class="form-control" placeholder="Enter username"
                                     formControlName="username">
                                 <div class="help-block">
                                     <small class="text-danger"
@@ -33,13 +34,18 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-12 form-group text-right">
-                            <button class="btn btn-success" type="submit" [disabled]="formLogin.invalid">Login</button>
+                        <div class="form-group row">
+                            <div class="col-md-12 float-right">
+                                <div class="col-md-2 float-right">
+
+                                    <button class="btn btn-success" type="submit" [disabled]="formLogin.invalid">Login</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="alert" role="alert">
                             To log in as admin, use Username and password "Admin"
                         </div>
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger" role="alert" *ngIf="hasMessage">
                             {{ErrorMessage}}
                         </div>
                     </div>
