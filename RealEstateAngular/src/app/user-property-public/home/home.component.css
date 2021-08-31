@@ -11,3 +11,33 @@
 .homeTitle {
     text-align: center !important;
 }
+
+
+.heart {
+    max-width: 2rem;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    margin: auto;
+}
+
+.details-card-padding{
+    padding-bottom: .3rem;
+}
+
+.fav-card-padding{
+    padding: .3rem;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .heartBrowserSpecific{
+        position: relative;
+        right: 50%;
+       }
+}
+
+@-moz-document url-prefix() {
+    .heartBrowserSpecific{
+        position: relative;
+        left: 0%;
+       }
+    } 

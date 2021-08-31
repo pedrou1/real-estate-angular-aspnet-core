@@ -1,7 +1,6 @@
-# Full stack Angular CRUD app .net core REST Web API & SQL Server
+# Full stack Angular CRUD app .net core REST Web API & SQL Server - Bootstrap
 
 # Real Estate property advertising and management website.
-### Created By Pedro Urrutia
 ### Live preview https://storageangularnetapp.z13.web.core.windows.net/home
 
 ## Feature list
@@ -18,6 +17,7 @@ Admin only operations marked with *
  * User Deletion *
  * User Profile
  * Send Contact Form
+ * Add favorites
 
 Property:
 

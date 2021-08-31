@@ -12,7 +12,7 @@ export class ShowUserComponent implements OnInit {
 
   UserList:any=[];
   ModalTitle:string;
-  ActiveAddEditUserComp:boolean=false;
+  ActiveAddEditUserComp:boolean=false; // show/hide component if editing or adding
   user:any;
   editingForm:boolean = true;
 
@@ -39,7 +39,7 @@ export class ShowUserComponent implements OnInit {
       this.ActiveAddEditUserComp=false;
       this.refreshUserList();
       this.editingForm = true;
-      this.animateButton();
+      this.service.animateButton("");
   }
 
   editClick(item){
@@ -62,15 +62,6 @@ export class ShowUserComponent implements OnInit {
     this.service.getUserList().subscribe(data =>{
       this.UserList=data;
     })
-  }
-
-  animateButton(){
-    const element = document.querySelector('#animatebutton');
-    element.classList.add('animated', 'bounceIn');
-    setTimeout(function () {
-      element.classList.remove('bounceIn');
-    }, 1000);
-
   }
 
 }

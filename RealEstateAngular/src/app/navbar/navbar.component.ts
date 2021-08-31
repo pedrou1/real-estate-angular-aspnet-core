@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../authentication/services/auth.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,8 +15,11 @@ export class NavbarComponent implements OnInit {
 
   islogged:boolean;
   admin:boolean;
+  itemsInFav:number;
+  items = [];
+  propPhotourl:string = "https://realestate.azurewebsites.net/ImagesUpload/"
   
-  constructor(private auth: AuthService, private router:Router) { }
+  constructor(private auth: AuthService, private router:Router, private service:SharedService) { }
 
   ngOnInit(): void {
 
@@ -27,9 +31,21 @@ export class NavbarComponent implements OnInit {
       this.admin = admin;
     });
 
+    this.service.favItems.subscribe(v=>{
+      this.itemsInFav = v.length;
+    })
+
+    this.service.favItems.subscribe(data=>{
+      this.items = data;
+    });
+
   }
 
-  
+  delete(i:number){
+    this.items.splice(i,1);
+    this.service.setFavs(this.items);
+  }
+
   logOut(){
     this.auth.logout();
   }

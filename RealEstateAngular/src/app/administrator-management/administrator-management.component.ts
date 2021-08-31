@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-administrator-management',
@@ -10,28 +10,18 @@ export class AdministratorManagementComponent implements OnInit {
 
   manageUsers:boolean;
 
-  constructor(private router: Router) { }
+  constructor(private service: SharedService) { }
 
   ngOnInit(): void {
     this.openPropertiesManagement();
   }
 
   openPropertiesManagement(){
-    this.animateButton("Prop");
+    this.service.animateButton("Prop");
     this.manageUsers = false;
   }
   openUserManagement(){
-    this.animateButton("Usr");
+    this.service.animateButton("Usr");
     this.manageUsers = true;
   }
-
-  animateButton(type:string){
-    const element = document.querySelector('#animatebutton'+type);
-    element.classList.add('animated', 'bounceIn');
-    setTimeout(function () {
-      element.classList.remove('bounceIn');
-    }, 1000);
-
-  }
-
 }

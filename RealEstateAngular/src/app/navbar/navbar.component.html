@@ -1,47 +1,82 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <div class="container px-4 px-lg-5 font">
-        <a class="navbar-brand" href="#" routerLink="home">Real estate</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarc"
-            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation" id="dropdownMenuButton">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <div class="container px-4 px-lg-5 font">
+      <a class="navbar-brand" href="#" routerLink="home">Real estate</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarc"
+        aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation" id="dropdownMenuButton">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarc" aria-labelledby="dropdownMenuButton">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" routerLink="home" [routerLinkActive]="['active']">Home</a>
-                </li>
+      <div class="collapse navbar-collapse" id="navbarc" aria-labelledby="dropdownMenuButton">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" routerLink="home" [routerLinkActive]="['active']">Home</a>
+            </li>
 
-                <li class="nav-item" *ngIf="!admin">
-                  <a class="nav-link" href="#" routerLink="about" [routerLinkActive]="['active']">About us</a>
-                </li>
+            <li class="nav-item" *ngIf="!admin">
+              <a class="nav-link" href="#" routerLink="about" [routerLinkActive]="['active']">About us</a>
+            </li>
 
-                <li class="nav-item" *ngIf="!admin">
-                  <a class="nav-link" href="#" routerLink="contact" [routerLinkActive]="['active']">Contact</a>
-                </li>
+            <li class="nav-item" *ngIf="!admin">
+              <a class="nav-link" href="#" routerLink="contact" [routerLinkActive]="['active']">Contact</a>
+            </li>
 
-                <li class="nav-item" *ngIf="admin">
-                    <a class="nav-link" href="#" routerLink="administrator-management" [routerLinkActive]="['active']">Management</a>
-                </li>
-            </ul>
+            <li class="nav-item" *ngIf="admin">
+              <a class="nav-link" href="#" routerLink="administrator-management"
+                [routerLinkActive]="['active']">Management</a>
+            </li>
+          </ul>
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" routerLink="login" *ngIf="!islogged" [routerLinkActive]="['active']" >Login</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" routerLink="register" *ngIf="!islogged" [routerLinkActive]="['active']">Register</a>
-                  </li>
-                  <li class="nav-item">
-                  <a class="nav-link pointer" *ngIf="islogged" (click)="goToProfile()">Profile</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" *ngIf="islogged" (click)="logOut()">Log out</a>
-                  </li>
-                </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" routerLink="login" *ngIf="!islogged" [routerLinkActive]="['active']">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" routerLink="register" *ngIf="!islogged"
+                [routerLinkActive]="['active']">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pointer" *ngIf="islogged" (click)="goToProfile()">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" *ngIf="islogged" (click)="logOut()">Log out</a>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link favSpan pr-1 pointer" data-toggle="collapse"
+                data-target="#ViewFav">Favorites</span><span class="numItems"> {{itemsInFav}} </span>
+            </li>
+          </ul>
+      </div>
+  </div>
+  <div class="fav float-right">
+    <div class="items-list collapse margin-fav" id="ViewFav">
 
+        <div class="item" *ngFor="let property of items; let i = index">
+          <div class="row">
+            <div class="col-4">
+              <div class="item-pic">
+                <img [src]=propPhotourl+property.photo_file_name class="img-fluid" alt="product">
+              </div>
+            </div>
+            <div class="col-8 pl-0">
+              <h6 class="item-name">{{ property.property_type }}</h6>
+              <p class="item-price">$ {{ property.price }}</p>
+              <span class="item-remove pointer" (click)="delete(i)"><svg aria-hidden="true" focusable="false"
+                  data-prefix="fas" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512" class="svg-inline--fa fa-trash-alt fa-w-14 fa-fw fa-lg">
+                  <path fill="currentColor"
+                    d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
+                    class=""></path>
+                </svg></span>
+            </div>
+          </div>
         </div>
 
+      <div class="row">
+        <div class="view-fav">
+          <span class="close-fav" data-toggle="collapse" data-target="#ViewFav">Close</span>
+        </div>
+      </div>
+      
     </div>
-
+  </div>
 </nav>

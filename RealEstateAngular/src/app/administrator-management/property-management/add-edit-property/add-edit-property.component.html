@@ -20,31 +20,37 @@
                     <div class="form-group row">
                         <label class="col-md-4 col-form-label text-md-right">Description</label>
                         <div class="col-md-6">
-                            <textarea name="text" class="form-control" cols="40" rows="5" formControlName="description" placeholder="Enter description"> </textarea>
+                            <textarea name="text" class="form-control" cols="40" rows="5" formControlName="description"
+                                placeholder="Enter description"> </textarea>
                             <div class="help-block">
                                 <small class="text-danger"
-                                *ngIf="getControl.description.errors?.minlength && getControl.description.touched">
-                                Description must be at least 10 characters long.
+                                    *ngIf="getControl.description.errors?.minlength && getControl.description.touched">
+                                    Description must be at least 10 characters long.
                                 </small>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">city</label>
+                        <label class="col-md-4 col-form-label text-md-right">City</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Enter city" formControlName="city">
+                            <select class="form-control" formControlName="city">
+                                <option selected>Canelones </option>
+                                <option>Colonia del Sacramento</option>
+                                <option>Maldonado</option>
+                                <option>Montevideo</option>
+                            </select>
                             <div class="help-block">
                                 <small class="text-danger"
                                 *ngIf="getControl.city.errors?.minlength && getControl.city.touched">
-                                City must be at least 4 characters long.
+                                City not selected.
                                 </small>
                             </div>
                         </div>
                     </div>
-
+                        
                     <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">address</label>
+                        <label class="col-md-4 col-form-label text-md-right">Address</label>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="address" placeholder="Enter address" formControlName="address">
                             <div class="help-block">

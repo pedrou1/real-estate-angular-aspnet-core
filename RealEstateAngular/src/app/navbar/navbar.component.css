@@ -2,9 +2,71 @@
     cursor: pointer;
 }
 
+.favSpan {
+    display: inline-block;
+}
+
 .font {
     font-family: Poppins,sans-serif;
     font-weight: 300;
     font-size: .975rem;
-line-height: 1.5;
+    line-height: 1.5;
+}
+
+.margin-fav {
+    margin-top: 1.9rem;
+}
+
+.numItems {
+    color: #b0b0b0;
+    font-size: .84rem;
+}
+	
+.fav .items-list {
+    background-color: #fff;
+    padding: .5rem .5rem 0rem .5rem;
+    border: 1px solid #ddd;
+    width: 20rem;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px 0px #888;
+    position: absolute;
+    right: 5px;
+}
+.fav .item-name,
+.fav .item-price {
+    margin: 0px 0px 5px;
+}
+.fav .item-pic {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+.fav .item-pic img {
+    height: 100%;
+    max-height: 60px;
+    margin: 0 auto;
+    display: block;
+}
+
+.fav .item-remove {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.fav .item {
+    padding: 10px 0px;
+    border-bottom: 1px solid #ddd;
+}
+.fav .view-fav {
+    text-align: center;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-top: -1px;
+}
+.fav .close-fav {
+    float: left;
+    color: #00312c;
+    cursor: pointer;
 }

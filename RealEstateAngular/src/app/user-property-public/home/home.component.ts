@@ -26,7 +26,16 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  addToFav(property) {
+    this.animate(property.property_id);
+    this.sharedService.addItem(property);
+  }
+
   onSelect(property){
     this.router.navigate(['/property-detail',property.property_id])
+  }
+
+  animate(property_id){
+    this.sharedService.animateButton(property_id);
   }
 }
